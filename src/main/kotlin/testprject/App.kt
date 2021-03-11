@@ -5,6 +5,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook
 import testprject.jsonSerializers.GsonJsonSerializer
 import testprject.jsonSerializers.JsonSerializer
 import testprject.jsonSerializers.KotlinSerialization
+import testprject.jsonSerializers.MoshiSerialization
 import testprject.objects.TopLevelObject
 import testprject.objectsFactory.ObjectFactory
 import testprject.objectsFactory.SingleLevelModelFactory
@@ -40,6 +41,21 @@ private val experimentSet = setOf(
                 100
         ),
         Experiment(KotlinSerialization(),
+                SingleLevelModelFactory(),
+                1_000_000,
+                100
+        ),
+        Experiment(MoshiSerialization(),
+                SingleLevelModelFactory(),
+                1000,
+                100
+        ),
+        Experiment(MoshiSerialization(),
+                SingleLevelModelFactory(),
+                100_000,
+                100
+        ),
+        Experiment(MoshiSerialization(),
                 SingleLevelModelFactory(),
                 1_000_000,
                 100
