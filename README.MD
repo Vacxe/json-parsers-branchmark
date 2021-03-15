@@ -1,6 +1,7 @@
 ### Included:
 * GSON
 * Kotlin Serialization
+* Moshi
 
 ### Elements per run:
 * 1000 
