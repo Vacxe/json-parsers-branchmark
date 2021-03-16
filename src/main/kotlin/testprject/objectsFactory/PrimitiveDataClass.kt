@@ -8,5 +8,6 @@ data class PrimitiveDataClass(
         val int: Int,
         val double: Double,
         val float: Float,
-        val boolean: Boolean
+        val boolean: Boolean,
+        val optional: String? = "Optional String"
 )

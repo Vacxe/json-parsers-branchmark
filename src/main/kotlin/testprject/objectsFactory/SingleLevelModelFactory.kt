@@ -11,7 +11,8 @@ class SingleLevelModelFactory : ObjectFactory {
             int = Random.nextInt(),
             double = Random.nextDouble(),
             float = Random.nextFloat(),
-            boolean = Random.nextBoolean()
+            boolean = Random.nextBoolean(),
+            optional = null
     )
 
     override val info = "flat structure"

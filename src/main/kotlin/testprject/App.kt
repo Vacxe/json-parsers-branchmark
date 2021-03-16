@@ -17,48 +17,19 @@ import kotlin.math.roundToLong
 private val experimentSet = setOf(
         Experiment(GsonJsonSerializer(),
                 SingleLevelModelFactory(),
-                1000,
-                100
+                0,
+                0
         ),
-        Experiment(GsonJsonSerializer(),
-                SingleLevelModelFactory(),
-                100_000,
-                100
-        ),
-        Experiment(GsonJsonSerializer(),
-                SingleLevelModelFactory(),
-                1_000_000,
-                100
-        ),
+
         Experiment(KotlinSerialization(),
                 SingleLevelModelFactory(),
-                1000,
-                100
-        ),
-        Experiment(KotlinSerialization(),
-                SingleLevelModelFactory(),
-                100_000,
-                100
-        ),
-        Experiment(KotlinSerialization(),
-                SingleLevelModelFactory(),
-                1_000_000,
-                100
+                0,
+                0
         ),
         Experiment(MoshiSerialization(),
                 SingleLevelModelFactory(),
-                1000,
-                100
-        ),
-        Experiment(MoshiSerialization(),
-                SingleLevelModelFactory(),
-                100_000,
-                100
-        ),
-        Experiment(MoshiSerialization(),
-                SingleLevelModelFactory(),
-                1_000_000,
-                100
+                0,
+                0
         )
 )
 
@@ -89,8 +60,11 @@ fun main() {
 
 private fun doExperiment(experiment: Experiment): ExperimentRawResult {
     val (randomValueArray, generationTime) = generate(experiment, experiment.objectFactory)
+    println("Object: $randomValueArray")
     val (serializedString, serializationTime) = serialize(experiment.jsonSerializer, randomValueArray)
-    val (_, deserializationTime) = deserialize(experiment.jsonSerializer, serializedString)
+    println("Serialized: $serializedString")
+    val (result, deserializationTime) = deserialize(experiment.jsonSerializer, serializedString)
+    println("Deserialized: $result")
     return ExperimentRawResult(generationTime, serializationTime, deserializationTime)
 }
 
